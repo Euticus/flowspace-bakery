@@ -6,6 +6,6 @@ class Cookie < ActiveRecord::Base
   private
 
   def bake_job
-    CookiesBakeJob.set(wait: 2.seconds).perform_later(self)
+    CookiesBakeJob.set(wait: 5.seconds).perform_later(self)
   end
 end
