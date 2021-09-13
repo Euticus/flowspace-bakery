@@ -3,9 +3,9 @@ class Cookie < ActiveRecord::Base
   validates :storage, presence: true
   after_commit :bake_job, on: :create
   
-  # private
+  private
 
   def bake_job
-    CookiesBakeJob.set(wait: 5.seconds).perform_later(self)
+    CookiesBakeJob.set(wait: 2.seconds).perform_later(self)
   end
 end
