@@ -9,8 +9,13 @@
   Cookies for sale:
   %ul
     - current_user.stored_cookies.group_by(&:fillings).each_pair do |fillings, cookies|
+      :ruby
+        total = 0
+        cookies.map do |c| 
+        total += c.quantity
+        end
       %li
-        = pluralize(cookies.count, "Cookies")
+        = pluralize(total, "cookies")
         with
         = fillings.length == 0 ? "no fillings" : fillings
     
