@@ -3,8 +3,4 @@ class OvenChannel < ApplicationCable::Channel
     stream_from "oven"
   end
 
-  def receive(data)
-    puts data["message"]
-    ActionCable.server.broadcast("test", "ActionCable is connected")
-  end
 end

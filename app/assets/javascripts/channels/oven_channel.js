@@ -1,14 +1,8 @@
-import CableReady from "cable_ready"
+import CableReady from 'cable_ready'
 import consumer from './consumer'
-​
-consumer.subscriptions.create('TestChannel', {
-  connected () {
-    this.send({ message: 'Client is live' })
-  },
-​
+
+consumer.subscriptions.create('OvenChannel', {
   received (data) {
-    console.log("this is data")
-    // if(data.cableReady) CableReady.perform(data.operations)
+    if (data.cableReady) CableReady.perform(data.operations)
   }
 })
-

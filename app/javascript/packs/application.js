@@ -16,6 +16,5 @@
 // const imagePath = (name) => images(name, true)
 
 
-require("channels")
-
-import "controllers"
+import 'channels'
+import 'controllers'   

@@ -4,5 +4,6 @@ FactoryBot.define do
   factory :cookie, :class => 'Cookie' do
     association :storage, factory: :oven
     fillings { "Chocolate Chip" }
+    quantity { 1 }
   end
 end
