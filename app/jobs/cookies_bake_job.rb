@@ -1,9 +1,12 @@
 class CookiesBakeJob < ApplicationJob
+  include CableReady::Broadcaster
   queue_as :default
-
- def self.perform(cookie)
-   sleep 5
-   cookie.is_baked = true
- end
-
+  
+  def perform(cookie)
+    cookie.update_attribute :is_baked, true
+    cable_ready["oven"].morph(
+      selector: "#cookie-status",
+      html: render(partial: "ovens/cookie_status", locals: {oven: cookie.storage})
+    ).broadcast
+  end
 end
