@@ -1,6 +1,7 @@
 class OvensController < ApplicationController
   include CableReady::Broadcaster
   before_action :authenticate_user!
+  before_action :check_for_mobile, :only => [:new, :edit]
 
   def index
     @ovens = current_user.ovens
