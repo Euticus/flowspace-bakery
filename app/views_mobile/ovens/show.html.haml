@@ -1,5 +1,5 @@
 %h3= @oven.name
-
+= link_to "Prepare Cookie", new_oven_cookies_path(@oven), class: 'button'
 
 .cookie-info
 Cookie in oven:
@@ -11,4 +11,3 @@ Cookie in oven:
 
 %br
 
-= link_to "Prepare Cookie", new_oven_cookies_path(@oven), class: 'button'
